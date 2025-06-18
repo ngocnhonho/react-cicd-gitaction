@@ -1,0 +1,11 @@
+name: Hello
+
+on: workflow_dispatch
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Webcome Git Action
+        run: echo "Hello Everyone!!"
+      - name: Bye Git Hub
+        run: echo "Bye Bye!!"
