@@ -1,0 +1,41 @@
+name: Deploy Dist folder
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/**' 
+    paths-ignore:
+      - '.github/workflows/*'
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+      - name: Setup Node.js and install dependencies
+        uses: ./.github/actions/setupnode
+        with:
+          node-version: 20
+      - name: print node version 
+        run: node -vv 
+      - name: Run Tests
+        run: npm run test
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+      - name: Setup Node and install depencencies
+        uses: ./.github/actions/setupnode
+      - name: Build artifact
+        run: npm run build
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-dist
+          path: dist/
+    
