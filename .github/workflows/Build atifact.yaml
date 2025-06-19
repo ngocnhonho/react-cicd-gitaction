@@ -18,8 +18,6 @@ jobs:
         uses: ./.github/actions/setupnode
         with:
           node-version: 20
-      - name: print node version 
-        run: node -vv 
       - name: Run Tests
         run: npm run test
 
