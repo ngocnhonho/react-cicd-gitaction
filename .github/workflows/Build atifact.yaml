@@ -36,4 +36,19 @@ jobs:
         with:
           name: app-dist
           path: dist/
-    
+  
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Dist Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: app-dist
+          path: dist/
+      - name: Deploy Artifact
+        run: |
+          echo 'Deploying below files'
+          ls dist
+          echo 'Deployment completed'
+ 
