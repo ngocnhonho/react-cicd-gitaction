@@ -1,9 +1,9 @@
-name: Deploy React to Github pages
+name: Deploy App to Github pages
 on: 
     push:
         branches:
             - main
-            - 'feature/**'
+            - 'feature/dev'
         paths-ignore:
             - README.md  
             - '.github/workflows/*' 

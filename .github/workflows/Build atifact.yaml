@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - 'feature/**' 
+      - 'feature/dev' 
     paths-ignore:
       - '.github/workflows/*'
   workflow_dispatch:
